@@ -25,6 +25,7 @@
   become: yes
   apt_repository: 
     repo: deb https://packagecloud.io/dokku/dokku/ubuntu/ trusty main
+    filename: dokku
     update_cache: yes
 
 - name: Install dokku
