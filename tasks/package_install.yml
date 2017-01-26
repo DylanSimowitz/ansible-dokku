@@ -37,4 +37,6 @@
 - name: Install dokku plugins
   become: yes
   command: "dokku plugin:install {{ item.repo }}"
+  register: dokku_plugin
   with_items: "{{ dokku_plugins }}"
+  failed_when: dokku_plugin.rc != 1
