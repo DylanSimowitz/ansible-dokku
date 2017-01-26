@@ -1,0 +1,22 @@
+- name: Free memory check
+  pause:
+    prompt:
+      - "For dokku to build containers, it is strongly suggested that you have 1024 megabytes or more of free memory"
+      - "If necessary, please consult this document to setup swap: http://dokku.viewdocs.io/dokku/advanced-installation/#vms-with-less-than-1gb-of-memory"
+  when: ansible_memory_mb.nocache.free < dokku_recommended_memory
+
+- name: Install requirements
+  become: yes
+  apt:
+    name: python-software-properties
+    update_cahe: yes
+  when: ansible_lsb.release == 12.04
+
+- name: Install dokku from source
+  include: source_install.yml
+  when: dokku_branch is defined
+
+- name: Install dokku from release
+  include: package_install.yml 
+  when: dokku_branch is not defined
+
