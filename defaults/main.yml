@@ -1,3 +1,4 @@
 dokku_version: 0.8.0
 dokku_ignore_aufs: no
 dokku_install_recommends: yes
+dokku_plugins: []

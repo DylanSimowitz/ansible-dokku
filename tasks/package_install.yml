@@ -33,3 +33,8 @@
   apt:
     name: "dokku={{ dokku_version }}"
     install_recommends: "{{ dokku_install_recommends }}"
+
+- name: Install dokku plugins
+  become: yes
+  command: dokku plugin:install {{ item.repo}}
+  with_items: dokku_plugins
