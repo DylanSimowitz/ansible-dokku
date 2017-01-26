@@ -1,2 +1,2 @@
 dependencies:
-  - { role: anstwad.docker_ubuntu }
+  - { role: angstwad.docker_ubuntu }
